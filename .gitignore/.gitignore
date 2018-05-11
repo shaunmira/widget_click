@@ -1,0 +1,62 @@
+# A
+'''
+from Tkinter import *
+root = Tk()
+a = 0
+
+def run(event=None):
+    global a
+    a = a + 1
+    print a
+    root.after(1000,run)
+   
+root.bind('<Button-1>', run)
+
+root.mainloop()
+'''
+
+# B
+'''
+from Tkinter import *
+root = Tk()
+
+class Add:
+    def __init__(self, root):
+        self.root = root
+        self.a = 0
+        self.root.bind('<Button-1>', self.run)
+
+    def run(self, event=None):
+        self.a = self.a + 1
+        print self.a
+        self.root.after(1000, self.run)
+        
+add = Add(root)
+
+root.mainloop()
+
+'''
+
+# C
+'''
+from Tkinter import *
+root = Tk()
+a = 0
+b = 0
+
+def run(event=None):
+    global a
+    global b
+    a = a + b
+    print a
+    root.bind('<Button-1>', add)
+    root.after(1000,run)
+
+def add(event=None):
+    global b 
+    b = 1
+    
+root.bind('<Button-1>', run)
+
+root.mainloop()
+'''
